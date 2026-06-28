@@ -3,393 +3,390 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Panificados del Sur</title>
+<title>Gestión de Alquileres</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
-body{background:#fdf8f0;min-height:100vh}
-.header{background:linear-gradient(135deg,#b45309,#d97706);color:white;padding:16px 20px}
-.header-top{display:flex;align-items:center;gap:10px;margin-bottom:4px}
-.header h1{font-size:20px;font-weight:bold}
-.header p{font-size:12px;opacity:.85}
-.tabs{display:flex;gap:4px;margin-top:12px}
-.tab{padding:8px 20px;border:none;cursor:pointer;border-radius:8px 8px 0 0;font-size:14px;font-weight:600;transition:all .2s}
-.tab.active{background:white;color:#b45309}
-.tab.inactive{background:rgba(255,255,255,0.15);color:white}
-.container{max-width:700px;margin:0 auto;padding:16px}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
-.stat{background:white;border-radius:10px;padding:12px 16px;box-shadow:0 1px 4px rgba(0,0,0,0.07);display:flex;align-items:center;gap:10px}
-.stat-icon{font-size:22px}
-.stat-val{font-size:20px;font-weight:bold;color:#1f2937}
-.stat-lbl{font-size:11px;color:#6b7280}
-.toolbar{display:flex;gap:8px;margin-bottom:12px}
-.toolbar input{flex:1;border:1px solid #e2e8f0;border-radius:8px;padding:8px 14px;font-size:14px;outline:none;background:#f8fafc}
-.toolbar input:focus{border-color:#d97706;box-shadow:0 0 0 2px #fde68a}
-.btn-primary{background:linear-gradient(135deg,#b45309,#d97706);color:white;border:none;border-radius:8px;padding:8px 18px;cursor:pointer;font-weight:600;font-size:14px;white-space:nowrap}
-.card{background:white;border-radius:12px;padding:14px 18px;box-shadow:0 1px 4px rgba(0,0,0,0.07);margin-bottom:10px}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start}
-.card-nombre{font-weight:bold;color:#1f2937;font-size:15px}
-.card-sub{font-size:12px;color:#6b7280;margin-top:2px}
-.card-actions{display:flex;gap:6px}
-.btn-icon{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:14px}
-.btn-wsp{color:#25D366}
-.btn-pdf{color:#0ea5e9}
-.btn-del{color:#ef4444}
-.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600;color:white}
-.empty{text-align:center;padding:40px;color:#9ca3af;font-size:15px}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px}
-.modal{background:white;border-radius:16px;padding:24px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto}
-.modal h2{font-weight:bold;color:#1f2937;margin-bottom:16px;font-size:17px}
-.label{font-size:12px;color:#64748b;display:block;margin-bottom:4px;font-weight:600;margin-top:10px}
-.input{width:100%;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;font-size:14px;outline:none;background:#f8fafc;font-family:inherit}
-.input:focus{border-color:#d97706;box-shadow:0 0 0 2px #fde68a}
-.select{width:100%;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;font-size:14px;outline:none;background:#f8fafc}
-.btn-row{display:flex;gap:8px;margin-top:16px}
-.btn-row button{flex:1;padding:10px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;border:none}
-.btn-save{background:linear-gradient(135deg,#b45309,#d97706);color:white}
-.btn-cancel{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0!important}
-.items-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
-.items-table th{text-align:left;padding:6px 8px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0}
-.items-table td{padding:6px 4px;border-bottom:1px solid #f0f0f0;vertical-align:middle}
-.items-table input{width:100%;border:1px solid #e2e8f0;border-radius:6px;padding:4px 6px;font-size:13px;outline:none;background:#f8fafc}
-.total-row{display:flex;justify-content:flex-end;padding:10px 0;font-weight:bold;color:#b45309;font-size:15px}
-.btn-add-item{background:#fef3c7;color:#b45309;border:1px solid #fde68a;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:13px;font-weight:600;margin-top:6px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1f2937;color:white;padding:10px 20px;border-radius:10px;font-size:14px;z-index:200;animation:fadeIn .2s}
-@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:60vh;gap:12px;font-size:16px;color:#6b7280}
-.pres-info{display:flex;gap:12px;font-size:12px;color:#6b7280;margin-top:4px}
+body{background:#f9fafb;min-height:100vh}
+.header{background:#16a34a;color:white;padding:16px;display:flex;align-items:center;gap:12px}
+.header h1{font-size:18px;font-weight:bold}
+.header p{font-size:12px;color:#bbf7d0}
+.back{background:none;border:none;color:white;font-size:22px;cursor:pointer;margin-right:4px}
+.container{max-width:520px;margin:0 auto;padding:16px}
+.card{background:white;border-radius:12px;border:1px solid #f0f0f0;box-shadow:0 1px 4px rgba(0,0,0,0.07);padding:16px;margin-bottom:12px}
+.inq-nombre{font-weight:bold;color:#1f2937;font-size:15px}
+.inq-prop{font-size:12px;color:#6b7280;margin-top:2px}
+.inq-tel{font-size:12px;color:#16a34a;margin-top:2px}
+.row-top{display:flex;justify-content:space-between;align-items:flex-start}
+.acciones{display:flex;gap:8px;margin-top:4px}
+.btn-edit{font-size:12px;color:#3b82f6;background:none;border:none;cursor:pointer}
+.btn-del{font-size:12px;color:#ef4444;background:none;border:none;cursor:pointer}
+.btn-liq{width:100%;margin-top:12px;background:#f0fdf4;color:#16a34a;font-weight:600;border:none;padding:10px;border-radius:8px;cursor:pointer;font-size:14px}
+.btn-liq:hover{background:#dcfce7}
+.btn-green{width:100%;background:#16a34a;color:white;font-weight:700;border:none;padding:14px;border-radius:12px;cursor:pointer;font-size:14px;margin-bottom:8px}
+.btn-green:hover{background:#15803d}
+.btn-wsp{width:100%;background:#25D366;color:white;font-weight:700;border:none;padding:14px;border-radius:12px;cursor:pointer;font-size:14px;margin-bottom:8px}
+.btn-wsp:hover{background:#1ebe5d}
+.btn-gray{width:100%;background:#f3f4f6;color:#374151;font-weight:600;border:none;padding:12px;border-radius:10px;cursor:pointer;font-size:14px;margin-bottom:8px}
+.btn-gray:hover{background:#e5e7eb}
+.btn-blue{width:100%;background:#2563eb;color:white;font-weight:700;border:none;padding:14px;border-radius:12px;cursor:pointer;font-size:14px;margin-bottom:8px}
+.btn-blue:hover{background:#1d4ed8}
+.input{width:100%;border:1px solid #d1d5db;border-radius:8px;padding:8px 12px;font-size:14px;outline:none;margin-bottom:2px}
+.input:focus{border-color:#16a34a;box-shadow:0 0 0 2px #bbf7d0}
+.label{font-size:12px;color:#6b7280;display:block;margin-bottom:4px;margin-top:10px}
+.select{width:100%;border:1px solid #d1d5db;border-radius:8px;padding:8px 12px;font-size:14px;outline:none;background:white}
+.total-box{background:#f0fdf4;border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;margin:12px 0}
+.total-lbl{font-weight:bold;color:#374151}
+.total-val{font-weight:bold;color:#16a34a;font-size:18px}
+.search-row{display:flex;gap:8px;margin-bottom:12px}
+.search-row input{flex:1}
+.btn-nuevo{background:#16a34a;color:white;font-weight:600;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:14px;white-space:nowrap}
+.msg-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px;font-size:13px;white-space:pre-line;line-height:1.6;color:#1f2937;margin-bottom:12px}
+.sep{display:flex;align-items:center;gap:8px;margin:8px 0}
+.sep-line{flex:1;border-top:1px solid #e5e7eb}
+.sep-txt{font-size:11px;color:#9ca3af;white-space:nowrap}
+.highlight{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-bottom:12px}
+.highlight .inq-nombre{color:#166534}
+.pesos{position:relative}
+.pesos span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:14px}
+.pesos input{padding-left:28px}
+.two-col{display:flex;gap:12px}
+.two-col>div{flex:1}
+h2{font-weight:bold;color:#374151;margin-bottom:12px;font-size:16px}
+h3{font-weight:bold;color:#374151;margin-bottom:12px;font-size:15px}
+.btn-row{display:flex;gap:8px;margin-top:12px}
+.btn-row button{flex:1}
+.hidden{display:none}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-top">
-    <span style="font-size:28px">🥐</span>
-    <div>
-      <h1>Panificados del Sur</h1>
-      <p>Pueyrredón 362 · Adelia María, Córdoba</p>
-    </div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" id="tabClientes" onclick="switchTab('clientes')">👥 Clientes</button>
-    <button class="tab inactive" id="tabPresupuestos" onclick="switchTab('presupuestos')">📄 Presupuestos</button>
+  <button class="back hidden" id="btnBack" onclick="goBack()">←</button>
+  <div>
+    <h1>🏠 Gestión de Alquileres</h1>
+    <p id="headerSub"></p>
   </div>
 </div>
 
 <div class="container">
-  <div id="statsArea"></div>
-  <div class="toolbar">
-    <input type="text" id="searchInput" placeholder="Buscar..." oninput="render()"/>
-    <button class="btn-primary" onclick="abrirModal()">+ Nuevo</button>
-  </div>
-  <div id="listaArea"></div>
+  <div id="vistaLista"></div>
+  <div id="vistaNuevo" class="hidden"></div>
+  <div id="vistaEditar" class="hidden"></div>
+  <div id="vistaForm" class="hidden"></div>
+  <div id="vistaMsg" class="hidden"></div>
 </div>
 
-<div id="modalArea"></div>
-<div id="toastArea"></div>
-
 <script>
-let tabActual = "clientes";
+const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const mesActual = meses[new Date().getMonth()];
+const anio = new Date().getFullYear();
+const fechaHoy = () => { const d=new Date(); return `${String(d.getDate()).padStart(2,"0")}/${String(d.getMonth()+1).padStart(2,"0")}/${d.getFullYear()}`; };
+const fmtPesos = v => { const n=parseFloat((v||"0").toString().replace(/\./g,"").replace(",",".")); return isNaN(n)?"0":n.toLocaleString("es-AR",{minimumFractionDigits:0,maximumFractionDigits:2}); };
+const parsePesos = v => parseFloat((v||"0").toString().replace(/\./g,"").replace(",",".")) || 0;
 
-const STORAGE_CLI = "panificados:clientes";
-const STORAGE_PRE = "panificados:presupuestos";
-
-const clientesDefault = [
-  {id:"c1", nombre:"Supermercado El Sol", telefono:"3585-123456", direccion:"Av. San Martín 100", email:"elsol@mail.com", creado:"2024-01-10"}
+let inquilinos = [
+  {id:4, nombre:"ALTURRIA WALTER", telefono:"5493585432862", propiedad:"SAN LORENZO 596 D", formaPago:"Otro"},
+  {id:15,nombre:"BISOTTO JOHANA", telefono:"5493585415744", propiedad:"PUERREYDON 262 LOCAL", formaPago:"Otro"},
+  {id:16,nombre:"CERVELLA MARIELA", telefono:"5493585408466", propiedad:"DR EUGENIO FODOR 296", formaPago:"Otro"},
+  {id:17,nombre:"CERVELLA SILVINA", telefono:"5493585408466", propiedad:"DR EUGENIO FODOR 296", formaPago:"Otro"},
+  {id:6, nombre:"CORIA MIGUEL", telefono:"5493584244153", propiedad:"SAN LORENZO 596 F", formaPago:"Otro"},
+  {id:12,nombre:"DIAZ ELIZABETH", telefono:"5493585590194", propiedad:"PUERREYDON 262 A", formaPago:"Otro"},
+  {id:2, nombre:"GABELLE MARTIN", telefono:"5493585433415", propiedad:"GOB SABATTINI B", formaPago:"Otro"},
+  {id:9, nombre:"GONZALES ALEXANDRA", telefono:"5493585413107", propiedad:"PUERREYDON 262 D", formaPago:"Otro"},
+  {id:7, nombre:"IMENZON M.EUGENIA", telefono:"5493585431197", propiedad:"SAN LORENZO 596 G", formaPago:"Otro"},
+  {id:8, nombre:"MAGALLANES HECTOR", telefono:"5493584238399", propiedad:"SAN LORENZO 596 H", formaPago:"Otro"},
+  {id:1, nombre:"OVIEDO LUCIA", telefono:"5493585646588", propiedad:"GOB SABATTINI A", formaPago:"Transferencia"},
+  {id:14,nombre:"RIVAS CLAUDIA", telefono:"5493585404455", propiedad:"SAN JUAN BOSCO 356", formaPago:"Otro"},
+  {id:5, nombre:"SANNI HUGO", telefono:"5493585646244", propiedad:"SAN LORENZO 596 E", formaPago:"Otro"},
+  {id:3, nombre:"TONELLO DANIEL", telefono:"5493585412406", propiedad:"SAN LORENZO 596 C", formaPago:"Otro"},
+  {id:10,nombre:"TOULET CAMILA", telefono:"5493585409125", propiedad:"PUERREYDON 262 C", formaPago:"Otro"},
+  {id:11,nombre:"TULIAN SOLEDAD", telefono:"5493585408727", propiedad:"PUERREYDON 262 B", formaPago:"Otro"},
+  {id:13,nombre:"WAYMAN AGUSTINA", telefono:"5493585434385", propiedad:"CURA BROCHERO Y BELGRANO", formaPago:"Otro"},
 ];
-const presupuestosDefault = [
-  {id:"p1", clienteId:"c1", numero:"001", fecha:"2024-06-01", estado:"aprobado", items:[{desc:"Pan francés x100", qty:2, precio:1500}], total:3000}
-];
 
-let clientes = JSON.parse(localStorage.getItem(STORAGE_CLI) || JSON.stringify(clientesDefault));
-let presupuestos = JSON.parse(localStorage.getItem(STORAGE_PRE) || JSON.stringify(presupuestosDefault));
+let selInq = null;
+let expensas = {alquiler:"",agua:"",gas:"",cloaca:"",luz:""};
+let formaPago = "Otro";
+let vencimiento = "10";
+let nroRecibo = 1;
+let editInq = null;
+let vistaActual = "lista";
 
-function guardarStorage() {
-  localStorage.setItem(STORAGE_CLI, JSON.stringify(clientes));
-  localStorage.setItem(STORAGE_PRE, JSON.stringify(presupuestos));
+function updateHeader() {
+  document.getElementById("headerSub").textContent = `${mesActual} ${anio} · ${inquilinos.length} inquilinos`;
+  document.getElementById("btnBack").classList.toggle("hidden", vistaActual === "lista");
 }
 
-const ESTADO_COLOR = {pendiente:"#f59e0b", aprobado:"#22c55e", rechazado:"#ef4444", facturado:"#6366f1"};
-const genId = () => Math.random().toString(36).slice(2,9);
-const today = () => new Date().toISOString().slice(0,10);
-const fmt = n => Number(n).toLocaleString("es-AR",{style:"currency",currency:"ARS"});
-
-function switchTab(tab) {
-  tabActual = tab;
-  document.getElementById("tabClientes").className = "tab " + (tab==="clientes"?"active":"inactive");
-  document.getElementById("tabPresupuestos").className = "tab " + (tab==="presupuestos"?"active":"inactive");
-  document.getElementById("searchInput").value = "";
-  document.getElementById("searchInput").placeholder = `Buscar ${tab}...`;
-  render();
-}
-
-function showToast(msg) {
-  const t = document.getElementById("toastArea");
-  t.innerHTML = `<div class="toast">${msg}</div>`;
-  setTimeout(()=>t.innerHTML="", 2500);
-}
-
-function render() {
-  renderStats();
-  if(tabActual==="clientes") renderClientes();
-  else renderPresupuestos();
-}
-
-function renderStats() {
-  const totalFact = presupuestos.filter(p=>p.estado==="aprobado").reduce((s,p)=>s+p.total,0);
-  document.getElementById("statsArea").innerHTML = `
-    <div class="stats">
-      <div class="stat"><span class="stat-icon">👥</span><div><div class="stat-val">${clientes.length}</div><div class="stat-lbl">Clientes</div></div></div>
-      <div class="stat"><span class="stat-icon">📄</span><div><div class="stat-val">${presupuestos.length}</div><div class="stat-lbl">Presupuestos</div></div></div>
-      <div class="stat"><span class="stat-icon">✅</span><div><div class="stat-val">${presupuestos.filter(p=>p.estado==="aprobado").length}</div><div class="stat-lbl">Aprobados</div></div></div>
-      <div class="stat"><span class="stat-icon">💰</span><div><div class="stat-val" style="font-size:14px">${fmt(totalFact)}</div><div class="stat-lbl">Total facturado</div></div></div>
-    </div>
-  `;
-}
-
-function renderClientes() {
-  const busq = document.getElementById("searchInput").value.toLowerCase();
-  const filtrados = clientes.filter(c => c.nombre.toLowerCase().includes(busq) || c.telefono?.includes(busq) || c.email?.toLowerCase().includes(busq));
-  if(!filtrados.length){ document.getElementById("listaArea").innerHTML=`<div class="empty">😕 No hay clientes</div>`; return; }
-  document.getElementById("listaArea").innerHTML = filtrados.map(c => `
-    <div class="card">
-      <div class="card-top">
-        <div>
-          <div class="card-nombre">${c.nombre}</div>
-          <div class="card-sub">
-            ${c.telefono?`📞 ${c.telefono} &nbsp;`:""}
-            ${c.email?`✉️ ${c.email} &nbsp;`:""}
-            ${c.direccion?`📍 ${c.direccion}`:""}
-          </div>
-          <div class="card-sub" style="margin-top:4px">Presupuestos: ${presupuestos.filter(p=>p.clienteId===c.id).length}</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn-icon" onclick="editarCliente('${c.id}')">✏️</button>
-          <button class="btn-icon btn-del" onclick="borrarCliente('${c.id}')">🗑️</button>
-        </div>
-      </div>
-    </div>
-  `).join("");
-}
-
-function renderPresupuestos() {
-  const busq = document.getElementById("searchInput").value.toLowerCase();
-  const filtrados = presupuestos.filter(p => {
-    const cl = clientes.find(c=>c.id===p.clienteId);
-    return cl?.nombre.toLowerCase().includes(busq) || p.numero?.includes(busq) || p.estado?.includes(busq);
+function showVista(v) {
+  vistaActual = v;
+  ["lista","nuevo","editar","form","msg"].forEach(x => {
+    document.getElementById("vista"+x.charAt(0).toUpperCase()+x.slice(1)).classList.add("hidden");
   });
-  if(!filtrados.length){ document.getElementById("listaArea").innerHTML=`<div class="empty">😕 No hay presupuestos</div>`; return; }
-  document.getElementById("listaArea").innerHTML = filtrados.map(p => {
-    const cl = clientes.find(c=>c.id===p.clienteId);
-    return `
+  document.getElementById("vista"+v.charAt(0).toUpperCase()+v.slice(1)).classList.remove("hidden");
+  updateHeader();
+}
+
+function goBack() { showVista("lista"); renderLista(); }
+
+function getTotal() {
+  return Object.values(expensas).reduce((a,v) => a+parsePesos(v), 0);
+}
+
+function getMsgLiq() {
+  const fmt = v => { const n=parsePesos(v); return n?`$${fmtPesos(n)}`:null; };
+  const l = [`*Liquidación ${mesActual} ${anio}*`, `Hola ${selInq.nombre}!`, `Propiedad: ${selInq.propiedad}`];
+  if(fmt(expensas.alquiler)) l.push(`• Alquiler: ${fmt(expensas.alquiler)}`);
+  if(fmt(expensas.agua)) l.push(`• Agua: ${fmt(expensas.agua)}`);
+  if(fmt(expensas.gas)) l.push(`• Gas: ${fmt(expensas.gas)}`);
+  if(fmt(expensas.cloaca)) l.push(`• Cloaca: ${fmt(expensas.cloaca)}`);
+  if(fmt(expensas.luz)) l.push(`• Luz: ${fmt(expensas.luz)}`);
+  l.push(`*TOTAL: $${fmtPesos(getTotal())}*`, `Forma de pago: ${formaPago}`, `Vencimiento: día ${vencimiento}`);
+  return l.join("\n");
+}
+
+function getMsgRec() {
+  const nro = String(nroRecibo).padStart(4,"0");
+  return [`🧾 *RECIBO DE PAGO N° ${nro}*`,`*${mesActual} ${anio}*`,``,
+    `Inquilino: ${selInq.nombre}`,`Propiedad: ${selInq.propiedad}`,
+    `Fecha de pago: ${fechaHoy()}`,`Forma de pago: ${formaPago}`,``,
+    `*TOTAL RECIBIDO: $${fmtPesos(getTotal())}*`,``,`✅ Pago registrado. ¡Gracias!`].join("\n");
+}
+
+function abrirWsp(txt) {
+  const tel = selInq.telefono.replace(/\D/g,"");
+  window.open(`https://wa.me/${tel}?text=${encodeURIComponent(txt)}`,"_blank");
+}
+
+// LISTA
+function renderLista(busq="") {
+  const filtrados = inquilinos.filter(i => i.nombre.includes(busq.toUpperCase()) || i.propiedad.includes(busq.toUpperCase()));
+  document.getElementById("vistaLista").innerHTML = `
+    <div class="search-row">
+      <input class="input" id="busqInput" placeholder="🔍 Buscar..." value="${busq}" oninput="renderLista(this.value)"/>
+      <button class="btn-nuevo" onclick="renderNuevo()">+ Nuevo</button>
+    </div>
+    ${filtrados.map(inq => `
+      <div class="card">
+        <div class="row-top">
+          <div>
+            <div class="inq-nombre">${inq.nombre}</div>
+            <div class="inq-prop">📍 ${inq.propiedad}</div>
+            <div class="inq-tel">📱 ${inq.telefono}</div>
+          </div>
+          <div class="acciones">
+            <button class="btn-edit" onclick="renderEditar(${inq.id})">Editar</button>
+            <button class="btn-del" onclick="borrarInq(${inq.id})">Borrar</button>
+          </div>
+        </div>
+        <button class="btn-liq" onclick="seleccionar(${inq.id})">📋 Generar liquidación</button>
+      </div>
+    `).join("")}
+  `;
+  showVista("lista");
+}
+
+function borrarInq(id) {
+  if(!confirm("¿Borrar este inquilino?")) return;
+  inquilinos = inquilinos.filter(i => i.id !== id);
+  guardarStorage(); renderLista();
+}
+
+// NUEVO
+function renderNuevo() {
+  document.getElementById("vistaNuevo").innerHTML = `
     <div class="card">
-      <div class="card-top">
-        <div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="card-nombre">Presupuesto #${p.numero}</span>
-            <span class="badge" style="background:${ESTADO_COLOR[p.estado]||'#888'}">${p.estado.charAt(0).toUpperCase()+p.estado.slice(1)}</span>
-          </div>
-          <div class="pres-info">
-            <span>👤 ${cl?.nombre||"Cliente eliminado"}</span>
-            <span>📅 ${p.fecha}</span>
-            <span>${p.items.length} ítem${p.items.length!==1?"s":""}</span>
-          </div>
-          <div style="font-weight:700;color:#b45309;margin-top:4px">${fmt(p.total)}</div>
-        </div>
-        <div class="card-actions" style="flex-wrap:wrap;gap:4px;max-width:120px">
-          <button class="btn-icon btn-wsp" onclick="enviarWsp('${p.id}')" title="WhatsApp">📲</button>
-          <button class="btn-icon btn-pdf" onclick="descargarPDF('${p.id}')" title="PDF">⬇️</button>
-          <button class="btn-icon" onclick="editarPres('${p.id}')">✏️</button>
-          <button class="btn-icon btn-del" onclick="borrarPres('${p.id}')">🗑️</button>
-        </div>
-      </div>
-    </div>
-  `}).join("");
-}
-
-// CLIENTES
-function abrirModal() {
-  if(tabActual==="clientes") modalNuevoCliente();
-  else modalNuevoPres();
-}
-
-function modalNuevoCliente(c=null) {
-  document.getElementById("modalArea").innerHTML = `
-    <div class="modal-overlay" onclick="if(event.target===this)cerrarModal()">
-      <div class="modal">
-        <h2>${c?"Editar Cliente":"Nuevo Cliente"}</h2>
-        ${[["nombre","Nombre / Razón Social",c?.nombre||""],["telefono","Teléfono",c?.telefono||""],["direccion","Dirección",c?.direccion||""],["email","Email",c?.email||""]].map(([k,l,v])=>`
-          <label class="label">${l}</label>
-          <input class="input" id="cl_${k}" value="${v}" placeholder="${l}"/>
-        `).join("")}
-        <div class="btn-row">
-          <button class="btn-save" onclick="guardarCliente('${c?.id||""}')">Guardar</button>
-          <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
-        </div>
+      <h2>Nuevo Inquilino</h2>
+      <label class="label">Nombre y apellido *</label>
+      <input class="input" id="nNombre" placeholder="Ej: GARCIA JUAN" oninput="this.value=this.value.toUpperCase()"/>
+      <label class="label">Propiedad *</label>
+      <input class="input" id="nPropiedad" placeholder="Ej: SAN LORENZO 596 A" oninput="this.value=this.value.toUpperCase()"/>
+      <label class="label">Teléfono</label>
+      <input class="input" id="nTelefono" placeholder="Ej: 5493585123456"/>
+      <label class="label">Forma de pago</label>
+      <select class="select" id="nPago"><option>Transferencia</option><option selected>Otro</option><option>Efectivo</option></select>
+      <div class="btn-row">
+        <button class="btn-green" onclick="guardarNuevo()">Guardar</button>
+        <button class="btn-gray" onclick="renderLista()">Cancelar</button>
       </div>
     </div>
   `;
+  showVista("nuevo");
 }
 
-function editarCliente(id) {
-  const c = clientes.find(x=>x.id===id);
-  modalNuevoCliente(c);
+function guardarNuevo() {
+  const n = document.getElementById("nNombre").value.trim();
+  const p = document.getElementById("nPropiedad").value.trim();
+  if(!n||!p) return alert("Nombre y propiedad son obligatorios");
+  inquilinos.push({id:Date.now(), nombre:n, propiedad:p, telefono:document.getElementById("nTelefono").value, formaPago:document.getElementById("nPago").value});
+  inquilinos.sort((a,b)=>a.nombre.localeCompare(b.nombre));
+  guardarStorage(); renderLista();
 }
 
-function guardarCliente(id) {
-  const nombre = document.getElementById("cl_nombre").value.trim();
-  if(!nombre) return alert("El nombre es obligatorio");
-  const datos = {nombre, telefono:document.getElementById("cl_telefono").value, direccion:document.getElementById("cl_direccion").value, email:document.getElementById("cl_email").value};
-  if(id) { clientes = clientes.map(c=>c.id===id?{...c,...datos}:c); }
-  else { clientes.push({...datos, id:genId(), creado:today()}); }
-  cerrarModal(); guardarStorage(); showToast("Cliente guardado ✓"); render();
-}
-
-function borrarCliente(id) {
-  if(!confirm("¿Eliminar este cliente?")) return;
-  clientes = clientes.filter(c=>c.id!==id);
-  guardarStorage(); showToast("Cliente eliminado"); render();
-}
-
-// PRESUPUESTOS
-let presItems = [];
-let presEstado = "pendiente";
-
-function modalNuevoPres(p=null) {
-  presItems = p ? p.items.map(i=>({...i})) : [{desc:"",qty:1,precio:0}];
-  presEstado = p?.estado || "pendiente";
-  const nroSig = String(presupuestos.length+1).padStart(3,"0");
-  document.getElementById("modalArea").innerHTML = `
-    <div class="modal-overlay" onclick="if(event.target===this)cerrarModal()">
-      <div class="modal" style="max-width:560px">
-        <h2>${p?"Editar Presupuesto":"Nuevo Presupuesto"}</h2>
-        <label class="label">Cliente *</label>
-        <select class="select" id="pres_cliente">
-          <option value="">-- Seleccionar --</option>
-          ${clientes.map(c=>`<option value="${c.id}" ${p?.clienteId===c.id?"selected":""}>${c.nombre}</option>`).join("")}
-        </select>
-        <div style="display:flex;gap:12px">
-          <div style="flex:1"><label class="label">Número</label><input class="input" id="pres_numero" value="${p?.numero||nroSig}"/></div>
-          <div style="flex:1"><label class="label">Fecha</label><input class="input" type="date" id="pres_fecha" value="${p?.fecha||today()}"/></div>
-          <div style="flex:1"><label class="label">Estado</label>
-            <select class="select" id="pres_estado" onchange="presEstado=this.value">
-              ${["pendiente","aprobado","rechazado","facturado"].map(e=>`<option value="${e}" ${(p?.estado||"pendiente")===e?"selected":""}>${e.charAt(0).toUpperCase()+e.slice(1)}</option>`).join("")}
-            </select>
-          </div>
-        </div>
-        <label class="label">Ítems</label>
-        <div id="itemsContainer"></div>
-        <button class="btn-add-item" onclick="agregarItem()">+ Agregar ítem</button>
-        <div class="total-row" id="totalRow"></div>
-        <div class="btn-row">
-          <button class="btn-save" onclick="guardarPres('${p?.id||""}')">Guardar</button>
-          <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
-        </div>
+// EDITAR
+function renderEditar(id) {
+  editInq = inquilinos.find(i=>i.id===id);
+  document.getElementById("vistaEditar").innerHTML = `
+    <div class="card">
+      <h2>Editar Inquilino</h2>
+      <label class="label">Nombre y apellido</label>
+      <input class="input" id="eNombre" value="${editInq.nombre}" oninput="this.value=this.value.toUpperCase()"/>
+      <label class="label">Propiedad</label>
+      <input class="input" id="ePropiedad" value="${editInq.propiedad}" oninput="this.value=this.value.toUpperCase()"/>
+      <label class="label">Teléfono</label>
+      <input class="input" id="eTelefono" value="${editInq.telefono}"/>
+      <label class="label">Forma de pago</label>
+      <select class="select" id="ePago">
+        <option ${editInq.formaPago==="Transferencia"?"selected":""}>Transferencia</option>
+        <option ${editInq.formaPago==="Otro"?"selected":""}>Otro</option>
+        <option ${editInq.formaPago==="Efectivo"?"selected":""}>Efectivo</option>
+      </select>
+      <div class="btn-row">
+        <button class="btn-green" onclick="guardarEditar()">Guardar</button>
+        <button class="btn-gray" onclick="renderLista()">Cancelar</button>
       </div>
     </div>
   `;
-  renderItems();
+  showVista("editar");
 }
 
-function renderItems() {
-  const container = document.getElementById("itemsContainer");
-  if(!container) return;
-  container.innerHTML = `
-    <table class="items-table">
-      <thead><tr><th>Descripción</th><th style="width:60px">Cant.</th><th style="width:90px">Precio</th><th style="width:30px"></th></tr></thead>
-      <tbody>
-        ${presItems.map((it,i)=>`
-          <tr>
-            <td><input class="input" value="${it.desc}" oninput="presItems[${i}].desc=this.value"/></td>
-            <td><input class="input" type="number" value="${it.qty}" oninput="presItems[${i}].qty=Number(this.value);actualizarTotal()"/></td>
-            <td><input class="input" type="number" value="${it.precio}" oninput="presItems[${i}].precio=Number(this.value);actualizarTotal()"/></td>
-            <td><button onclick="quitarItem(${i})" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:16px">×</button></td>
-          </tr>
-        `).join("")}
-      </tbody>
-    </table>
+function guardarEditar() {
+  inquilinos = inquilinos.map(i => i.id===editInq.id ? {...i,
+    nombre:document.getElementById("eNombre").value,
+    propiedad:document.getElementById("ePropiedad").value,
+    telefono:document.getElementById("eTelefono").value,
+    formaPago:document.getElementById("ePago").value
+  } : i);
+  guardarStorage(); renderLista();
+}
+
+// FORM
+function seleccionar(id) {
+  selInq = inquilinos.find(i=>i.id===id);
+  expensas = {alquiler:"",agua:"",gas:"",cloaca:"",luz:""};
+  formaPago = selInq.formaPago||"Otro";
+  vencimiento = "10";
+  renderForm();
+}
+
+function renderForm() {
+  document.getElementById("vistaForm").innerHTML = `
+    <div class="highlight">
+      <div class="inq-nombre">${selInq.nombre}</div>
+      <div class="inq-prop">📍 ${selInq.propiedad}</div>
+    </div>
+    <div class="card">
+      <h3>Liquidación ${mesActual} ${anio}</h3>
+      ${[["alquiler","🏠 Alquiler",true],["agua","💧 Agua",false],["gas","🔥 Gas",false],["cloaca","🚿 Cloaca",false],["luz","💡 Luz",false]].map(([k,l,r])=>`
+        <label class="label">${l}${r?" *":""}</label>
+        <div class="pesos"><span>$</span><input class="input" id="exp_${k}" placeholder="0" value="${expensas[k]}" oninput="expensas['${k}']=this.value;actualizarTotal()"/></div>
+      `).join("")}
+      <label class="label">Forma de pago</label>
+      <select class="select" id="formaPagoSel" onchange="formaPago=this.value">
+        <option ${formaPago==="Transferencia"?"selected":""}>Transferencia</option>
+        <option ${formaPago==="Otro"?"selected":""}>Otro</option>
+        <option ${formaPago==="Efectivo"?"selected":""}>Efectivo</option>
+      </select>
+      <label class="label">Vencimiento día</label>
+      <input class="input" id="vencInput" value="${vencimiento}" oninput="vencimiento=this.value"/>
+      <div class="total-box">
+        <span class="total-lbl">TOTAL</span>
+        <span class="total-val" id="totalDisplay">$0</span>
+      </div>
+      <button class="btn-green" id="btnVerMsg" onclick="renderMsg()" style="opacity:0.5;cursor:not-allowed" disabled>Ver mensaje →</button>
+    </div>
   `;
+  showVista("form");
   actualizarTotal();
 }
 
 function actualizarTotal() {
-  const total = presItems.reduce((s,it)=>s+(it.qty*it.precio),0);
-  const el = document.getElementById("totalRow");
-  if(el) el.textContent = `Total: ${fmt(total)}`;
+  const t = getTotal();
+  const el = document.getElementById("totalDisplay");
+  if(el) el.textContent = `$${fmtPesos(t)}`;
+  const btn = document.getElementById("btnVerMsg");
+  const tieneAlq = parsePesos(expensas.alquiler) > 0;
+  if(btn){ btn.disabled=!tieneAlq; btn.style.opacity=tieneAlq?"1":"0.5"; btn.style.cursor=tieneAlq?"pointer":"not-allowed"; }
 }
 
-function agregarItem() { presItems.push({desc:"",qty:1,precio:0}); renderItems(); }
-function quitarItem(i) { presItems.splice(i,1); renderItems(); }
-
-function guardarPres(id) {
-  const clienteId = document.getElementById("pres_cliente").value;
-  if(!clienteId) return alert("Seleccioná un cliente");
-  const total = presItems.reduce((s,it)=>s+(it.qty*it.precio),0);
-  const datos = {
-    clienteId,
-    numero: document.getElementById("pres_numero").value,
-    fecha: document.getElementById("pres_fecha").value,
-    estado: document.getElementById("pres_estado").value,
-    items: [...presItems],
-    total
-  };
-  if(id) { presupuestos = presupuestos.map(p=>p.id===id?{...p,...datos}:p); }
-  else { presupuestos.push({...datos, id:genId()}); }
-  cerrarModal(); guardarStorage(); showToast("Presupuesto guardado ✓"); render();
-}
-
-function editarPres(id) { modalNuevoPres(presupuestos.find(p=>p.id===id)); }
-
-function borrarPres(id) {
-  if(!confirm("¿Eliminar este presupuesto?")) return;
-  presupuestos = presupuestos.filter(p=>p.id!==id);
-  guardarStorage(); showToast("Presupuesto eliminado"); render();
-}
-
-function cerrarModal() { document.getElementById("modalArea").innerHTML=""; }
-
-function enviarWsp(id) {
-  const p = presupuestos.find(x=>x.id===id);
-  const cl = clientes.find(c=>c.id===p.clienteId);
-  const tel = cl?.telefono?.replace(/\D/g,"")||"";
-  const items = p.items.map(it=>`• ${it.desc} x${it.qty} = ${fmt(it.qty*it.precio)}`).join("\n");
-  const msg = `🥐 *Panificados del Sur*\nPueyrredón 362 - Adelia María, Córdoba\n📞 3585 408466 | 3585 646244\n\n📄 *Presupuesto N° ${p.numero}*\n👤 Cliente: ${cl?.nombre||"-"}\n📅 Fecha: ${p.fecha}\n\n*Detalle:*\n${items}\n\n💰 *Total: ${fmt(p.total)}*\nEstado: ${p.estado.toUpperCase()}\n\nGracias por elegirnos! 🙌`;
-  window.open(`https://wa.me/54${tel}?text=${encodeURIComponent(msg)}`,"_blank");
-}
-
-function descargarPDF(id) {
-  const p = presupuestos.find(x=>x.id===id);
-  const cl = clientes.find(c=>c.id===p.clienteId);
-  const items = p.items.map(it=>`<tr><td>${it.desc}</td><td>${it.qty}</td><td>${fmt(it.precio)}</td><td>${fmt(it.qty*it.precio)}</td></tr>`).join("");
-  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
-    body{font-family:Arial,sans-serif;padding:40px;color:#222}
-    .box{max-width:620px;margin:auto;border:2px solid #b45309;border-radius:12px;overflow:hidden}
-    .hdr{background:linear-gradient(135deg,#b45309,#d97706);color:white;padding:24px 32px}
-    .hdr h1{margin:0;font-size:22px}.hdr p{margin:4px 0 0;font-size:13px;opacity:.85}
-    .body{padding:24px 32px}
-    table{width:100%;border-collapse:collapse;margin-top:16px}
-    th{background:#fef3c7;color:#b45309;padding:8px;text-align:left;font-size:13px}
-    td{padding:8px;border-bottom:1px solid #f0f0f0;font-size:13px}
-    .tot{text-align:right;font-size:17px;font-weight:700;color:#b45309;margin-top:12px}
-    .ftr{text-align:center;padding:14px;font-size:12px;color:#aaa;border-top:1px solid #e5e7eb;margin-top:16px}
-  </style></head><body><div class="box">
-    <div class="hdr"><h1>🥐 Panificados del Sur</h1><p>Pueyrredón 362 · Adelia María, Córdoba · 📞 3585 408466</p></div>
-    <div class="body">
-      <p><strong>Presupuesto N° ${p.numero}</strong> · Fecha: ${p.fecha} · Estado: ${p.estado.toUpperCase()}</p>
-      <p>👤 Cliente: ${cl?.nombre||"-"} ${cl?.telefono?`· 📞 ${cl.telefono}`:""}</p>
-      <table><thead><tr><th>Descripción</th><th>Cant.</th><th>Precio Unit.</th><th>Subtotal</th></tr></thead><tbody>${items}</tbody></table>
-      <div class="tot">Total: ${fmt(p.total)}</div>
+// MENSAJE
+function renderMsg() {
+  document.getElementById("vistaMsg").innerHTML = `
+    <div class="card">
+      <h3>📋 Liquidación generada</h3>
+      <div class="msg-box">${getMsgLiq()}</div>
     </div>
-    <div class="ftr">Panificados del Sur · Adelia María, Córdoba · 3585 408466</div>
-  </div></body></html>`;
-  const blob = new Blob([html],{type:"text/html"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href=url; a.download=`Presupuesto_${p.numero}_${cl?.nombre||"cliente"}.html`; a.click();
-  URL.revokeObjectURL(url);
-  showToast("Presupuesto descargado ✓");
+    <button class="btn-wsp" onclick="abrirWsp(getMsgLiq())">💬 Enviar Liquidación por WhatsApp</button>
+    <button class="btn-gray" id="btnCopiar" onclick="copiarMsg()">📋 Copiar mensaje</button>
+    <div class="sep"><div class="sep-line"></div><span class="sep-txt">Una vez que el inquilino pague</span><div class="sep-line"></div></div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="font-size:20px">🧾</span><strong>Recibo de Pago</strong></div>
+      <div class="msg-box">${getMsgRec()}</div>
+      <div class="two-col">
+        <div>
+          <label class="label">N° de recibo</label>
+          <input class="input" type="number" id="nroRecInput" value="${nroRecibo}" min="1" oninput="nroRecibo=Number(this.value);actualizarRecibo()"/>
+        </div>
+        <div>
+          <label class="label">Fecha de pago</label>
+          <input class="input" value="${fechaHoy()}" readonly style="background:#f9fafb"/>
+        </div>
+      </div>
+      <button class="btn-wsp" onclick="abrirWsp(getMsgRec())">💬 Enviar Recibo por WhatsApp</button>
+      <button class="btn-blue" onclick="generarPDF()">📄 Descargar Recibo PDF</button>
+    </div>
+    <button class="btn-gray" onclick="renderForm()">← Editar montos</button>
+  `;
+  showVista("msg");
 }
 
-render();
+function actualizarRecibo() {
+  const el = document.querySelector("#vistaMsg .msg-box:last-of-type");
+  if(el) el.textContent = getMsgRec();
+}
+
+function copiarMsg() {
+  navigator.clipboard.writeText(getMsgLiq());
+  const btn = document.getElementById("btnCopiar");
+  if(btn){ btn.textContent="✅ ¡Copiado!"; setTimeout(()=>btn.textContent="📋 Copiar mensaje",2000); }
+}
+
+function generarPDF() {
+  const nro = String(nroRecibo).padStart(4,"0");
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+    body{font-family:Arial,sans-serif;margin:0;padding:40px;color:#222}
+    .box{max-width:600px;margin:auto;border:2px solid #16a34a;border-radius:12px;overflow:hidden}
+    .hdr{background:#16a34a;color:#fff;padding:24px 32px}
+    .hdr h1{margin:0;font-size:22px}.hdr p{margin:4px 0 0;font-size:13px;opacity:.85}
+    .nro{float:right;font-size:13px;opacity:.9;margin-top:4px}
+    .body{padding:28px 32px}
+    .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #e5e7eb;font-size:15px}
+    .lbl{color:#555}.val{font-weight:600}
+    .tot{display:flex;justify-content:space-between;padding:14px 20px;background:#f0fdf4;border-radius:8px;margin-top:16px}
+    .tot span{font-size:17px;font-weight:700;color:#15803d}
+    .firma{margin-top:40px;display:flex;justify-content:space-between;font-size:13px;color:#555}
+    .fl{border-top:1px solid #999;padding-top:6px;width:180px;text-align:center}
+    .ftr{text-align:center;padding:16px;font-size:12px;color:#aaa;border-top:1px solid #e5e7eb}
+  </style></head><body><div class="box">
+    <div class="hdr"><span class="nro">Recibo N° ${nro}</span><h1>🏠 RECIBO DE ALQUILER</h1><p>${mesActual} ${anio}</p></div>
+    <div class="body">
+      <div class="row"><span class="lbl">Inquilino</span><span class="val">${selInq.nombre}</span></div>
+      <div class="row"><span class="lbl">Propiedad</span><span class="val">${selInq.propiedad}</span></div>
+      <div class="row"><span class="lbl">Fecha de pago</span><span class="val">${fechaHoy()}</span></div>
+      <div class="row"><span class="lbl">Forma de pago</span><span class="val">${formaPago}</span></div>
+      <div class="tot"><span>TOTAL RECIBIDO</span><span>$${fmtPesos(getTotal())}</span></div>
+      <div class="firma"><div class="fl">Firma del locador</div><div class="fl">Firma del inquilino</div></div>
+    </div>
+    <div class="ftr">Recibo generado el ${fechaHoy()} · ${mesActual} ${anio}</div>
+  </div></body></html>`;
+  const win = window.open("","_blank");
+  win.document.write(html); win.document.close();
+  setTimeout(()=>win.print(),500);
+  nroRecibo++;
+  guardarStorage();
+}
+
+// INIT
+renderLista();
 </script>
 </body>
 </html>
